@@ -7,35 +7,77 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
     crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
-    crossorigin="anonymous"></script>
     <title>Race Time Predictor</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="display-1">Race Time Predictor</h1>
-    <h2>Enter a recent race result, including your distance and time.</h2>
-    <form>
-        <div class="row">
-            <div class="col-sm-1">
-                <label for="time-hours">Hours</label>
-                <input class="form-control" id="time-hours" placeholder="00">
+    <h1 class="display-4">Race Time Predictor</h1>
+    <h2 class="lead">Enter your distance and time from a recent race result, and your race distance you'd like to predict.</h2>
+        <form>
+            <div id="input">
+                <div class="form-group row">
+                    <label for="time" class="col-sm-1 col-form-label">Time</label>
+                    <div id="time">
+                        <div class="form-row" id="time">
+                            <div class="col-2">
+                                <input type="number" min="0" step = "any" class="form-control" id="hours" placeholder="HH">
+                            </div>
+                            <label class="time-:">:</label>
+                            <div class="col-2">
+                                <input type="number" min="0" step = "any" class="form-control" id="minutes" placeholder="MM">
+                            </div>
+                            <label class="time-:">:</label>
+                            <div class="col-2">
+                                <input type="number" min="0" step = "any" class="form-control" id="seconds" placeholder="SS">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="distance" class="col-sm-2 col-form-label">Distance</label>
+                    <div class="col-2">
+                    <input type="number" step = "any" class="form-control" id="distance">
+                    </div>
+                    <label for="distance" class="col-form-label">km</label>
+                </div>
+                <div class="form-group row">
+                    <label for="prediction-distance" class="col-sm-2 col-form-label">Prediction Distance</label>
+                    <div class="col-2" id="prediction-distance-div">
+                        <input type="number" step = "any" class="form-control" id="prediction-distance">
+                    </div>
+                    <label for="prediction-distance" class="col-form-label">km</label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-secondary" id="submit" onclick="calculate()">Get Times</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-1">
-                <label for="time-minutes">Minutes</label>
-                <input class="form-control" id="time-minutes" placeholder="00">
-            </div>
-            <div class="col-sm-1">
-                <label for="time-seconds">Seconds</label>
-                <input class="form-control" id="time-seconds" placeholder="00">
-            </div>
-        </div>
-        <div class="form-group col-sm-2">
-            <input class="form-control" placeholder="distance in km">
-            <button class="btn btn-secondary">Get Times</button>
-        </div>
-        
-    </form>
+        </form>
+    <div class="table-responsive" id="calculations">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Formula</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Cameron</th>
+                    <td id="cameron-time"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Riegel</th>
+                    <td id="riegel-time"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+    crossorigin="anonymous"></script>
+    <script src="calculations.js"></script>
 </html>
