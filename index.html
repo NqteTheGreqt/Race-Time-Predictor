@@ -13,6 +13,7 @@
 <body>
     <h1 class="display-4">Race Time Predictor</h1>
     <h2 class="lead">Enter your distance and time from a recent race result, and your race distance you'd like to predict.</h2>
+    <h3 class="lead">For the best results, enter your time for a distance close to the distance you'd like to predict.</h3>
         <form>
             <div id="input">
                 <div class="form-group row">
@@ -38,14 +39,22 @@
                     <div class="col-2">
                     <input type="number" step = "any" class="form-control" id="distance">
                     </div>
-                    <label for="distance" class="col-form-label">km</label>
+                    <select name="distance-units" id="distance-units">
+                        <option value="km">km</option>
+                        <option value="m">m</option>
+                        <option value="miles">miles</option>
+                    </select>
                 </div>
                 <div class="form-group row">
                     <label for="prediction-distance" class="col-sm-2 col-form-label">Prediction Distance</label>
                     <div class="col-2" id="prediction-distance-div">
                         <input type="number" step = "any" class="form-control" id="prediction-distance">
                     </div>
-                    <label for="prediction-distance" class="col-form-label">km</label>
+                    <select name="prediction-distance-units" id="prediction-distance-units">
+                        <option value="km">km</option>
+                        <option value="m">m</option>
+                        <option value="miles">miles</option>
+                    </select>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
@@ -73,6 +82,7 @@
                 </tr>
             </tbody>
         </table>
+        <p>Cameron and Riegel are common formulas used to predict race distances. Note that Riegel predictions are almost always faster times than Cameron predictions.</p>
     </div>
     
 </body>
