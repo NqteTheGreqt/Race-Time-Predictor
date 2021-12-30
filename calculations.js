@@ -2,16 +2,31 @@ function calculate() {
     var hours = document.getElementById("hours").value;
     var minutes = document.getElementById("minutes").value;
     var seconds = document.getElementById("seconds").value;
+    
     var distance = document.getElementById("distance").value;
+    var distanceUnits = document.getElementById("distance-units").value;
     var predictionDistance = document.getElementById("prediction-distance").value;
+    var predictionDistanceUnits = document.getElementById("prediction-distance-units").value;
 
     var time = toSeconds(hours, minutes, seconds);
 
     document.getElementById("cameron-time").innerHTML = 
-    toOutput(cameron(time, distance * 1000, predictionDistance * 1000));
+    toOutput(cameron(time, toKM(distance, distanceUnits) * 1000, toKM(predictionDistance, predictionDistanceUnits) * 1000));
     document.getElementById("riegel-time").innerHTML = 
-    toOutput(riegel(time, distance, predictionDistance));
+    toOutput(riegel(time, toKM(distance, distanceUnits), toKM(predictionDistance, predictionDistanceUnits)));
 }
+
+function toKM(distance, units) {
+    if (units.normalize() === "km") {
+        return distance;
+    }
+    else if (units.normalize() === "m") {
+        return distance / 1000;
+    }
+    else {
+        return distance * 1.609;
+    }
+} 
 
 function toSeconds(hours, minutes, seconds) {
     return hours * 3600 + minutes * 60 + seconds * 1;
